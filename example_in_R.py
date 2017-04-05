@@ -19,7 +19,15 @@ imf, res = newimf(tt2, xt2, draw=True)
 
 #%%
 figure()
-imf, res = newimf(tt2, res, draw=True)
-
-#%%
 imfs, res = extractimf(tt2, xt2, nIter=3, draw=True)
+
+#%% Dibujamos el spectrograma
+from scipy.signal import hilbert
+X = tt2
+an_sg = hilbert(imfs[0])
+phase = unwrap(angle(an_sg))
+freq = diff(phase) / (2.0*np.pi) * (1./(tt2[1]-tt2[0]))
+Y = freq
+Z = abs(an_sg)
+figure()
+contourf(X,Y,Z)

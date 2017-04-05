@@ -47,10 +47,10 @@ def newimf(x_val, y_val, draw=False):
     if draw:
         subplot(2,1,1)
         plot(x_val, y_val)
-        plot(x_val[idx_sup], maxi[:,1],"^")
+        plot(x_val[idx_sup], maxi[:,1],"o")
         plot(x_val, sup)
     
-        plot(x_val[idx_inf], mini[:,1],"^")
+        plot(x_val[idx_inf], mini[:,1],"o")
         plot(x_val, inf)
         plot(x_val, res)
                 
@@ -87,4 +87,7 @@ def _do_the_spline(x_val, y_val, points, kind="maximum"):
     
     return f_sup(x_val), indexes, points
     
-
+#analytic_signal = hilbert(signal)
+#amplitude_envelope = np.abs(analytic_signal)
+#instantaneous_phase = np.unwrap(np.angle(analytic_signal))
+#instantaneous_frequency = np.diff(instantaneous_phase) / (2.0*np.pi) * fs
